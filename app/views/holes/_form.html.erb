@@ -1,0 +1,37 @@
+<%= form_with(model: hole) do |form| %>
+  <% if hole.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(hole.errors.count, "error") %> prohibited this hole from being saved:</h2>
+
+      <ul>
+        <% hole.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :course_id, style: "display: block" %>
+    <%= form.number_field :course_id %>
+  </div>
+
+  <div>
+    <%= form.label :hole_number, style: "display: block" %>
+    <%= form.number_field :hole_number %>
+  </div>
+
+  <div>
+    <%= form.label :hole_handicap, style: "display: block" %>
+    <%= form.number_field :hole_handicap %>
+  </div>
+
+  <div>
+    <%= form.label :hole_par, style: "display: block" %>
+    <%= form.number_field :hole_par %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
