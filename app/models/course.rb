@@ -1,3 +1,8 @@
 class Course < ApplicationRecord
-    has_many :holes, :class_name => Hole, :foreign_key => :hole_id
+    has_many :holes
+
+    def show
+        @course = Course.find(params[:id])
+        @holes = @course.holes
+    end
 end
