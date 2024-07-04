@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+table {
+  width: 80%;
+  table-layout: fixed;
+}
+
+td {
+    align-content: center
+}
