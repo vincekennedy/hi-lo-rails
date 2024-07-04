@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @course %>
+<% @course.holes.each do |hole| %>
+  <li>Hole <%= hole.hole_number %></li>
+  <li>Par:<%= hole.hole_par %></li>
+  <li>HCP:<%= hole.hole_handicap %></li>
+<% end %>
+<div>
+  <%= link_to "Edit this course", edit_course_path(@course) %> |
+  <%= link_to "Back to courses", courses_path %>
+
+  <%= button_to "Destroy this course", @course, method: :delete %>
+</div>
