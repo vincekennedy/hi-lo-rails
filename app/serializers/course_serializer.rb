@@ -1,3 +1,7 @@
 class CourseSerializer < ActiveModel::Serializer
-    attributes :name, :holes
+    attributes :name, :rating, :slope, :par, :holes
+
+    def holes
+        object.holes.count
+    end
 end
