@@ -31,7 +31,51 @@
     <%= form.number_field :par %>
   </div>
 
+  <br>
+  <table>
+    <tr>
+      <th></th>
+      <% for i in 1..9 do %>
+          <th><%= i %></th>
+      <% end %>
+    </tr>
+    <tr>
+    <td>PAR</td>
+    <% for i in 1..9 do %>
+      <td><input type="number" step="1" style="width:80%;"/></td>
+    <% end %>
+    </tr>
+    <tr>
+    <td>HCP</td>
+    <% for i in 1..9 do %>
+      <td><input type="number" step="1" style="width:80%;"/></td>
+    <% end %>
+    </tr>
+
+    <tr>
+      <th></th>
+      <% for i in 10..18 do %>
+        <th><%= i %></th>
+      <% end %>
+    </tr>
+    <tr>
+    <td>PAR</td>
+    <% for i in 1..9 do %>
+      <td><input type="number" step="1" style="width:80%;"/></td>
+    <% end %>
+    </tr>
+    <tr>
+    <td>HCP</td>
+    <% for i in 1..9 do %>
+      <td><input type="number" step="1" style="width:80%;"/></td>
+    <% end %>
+    </tr>
+  </table>
+
+  <br><br>
+
   <div>
     <%= form.submit %>
   </div>
+  <br><br>
 <% end %>

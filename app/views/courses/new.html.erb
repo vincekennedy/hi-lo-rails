@@ -2,47 +2,6 @@
 
 <%= render "form", course: @course %>
 
-<br>
-<table>
-  <tr>
-    <th></th>
-    <% for i in 1..9 do %>
-        <th><%= i %></th>
-    <% end %>
-  </tr>
-  <tr>
-  <td>PAR</td>
-  <% for i in 1..9 do %>
-    <td><input type="number" step="1"/></td>
-  <% end %>
-  </tr>
-  <tr>
-  <td>HCP</td>
-  <% for i in 1..9 do %>
-    <td><input type="number" step="1"/></td>
-  <% end %>
-  </tr>
-
-  <tr>
-    <th></th>
-    <% for i in 10..18 do %>
-      <th><%= i %></th>
-    <% end %>
-  </tr>
-  <tr>
-  <td>PAR</td>
-  <% for i in 1..9 do %>
-    <td><input type="number" step="1"/></td>
-  <% end %>
-  </tr>
-  <tr>
-  <td>HCP</td>
-  <% for i in 1..9 do %>
-    <td><input type="number" step="1"/></td>
-  <% end %>
-  </tr>
-</table>
-
 <div>
   <%= link_to "Back to courses", courses_path %>
 </div>
