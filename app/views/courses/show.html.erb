@@ -1,6 +1,7 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @course %>
+
 <% @course.holes.each do |hole| %>
   <li>Hole <%= hole.hole_number %></li>
   <li>Par:<%= hole.hole_par %></li>

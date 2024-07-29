@@ -29,3 +29,7 @@ td {
     border: 1px solid;
     align-content: center
 }
+
+.hole_input input[type=number], .hole_input textarea {
+  width: 80%
+}
