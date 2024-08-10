@@ -41,9 +41,11 @@
     </tr>
     <tr>
     <td>PAR</td>
-    <% for i in 1..9 do %>
-      <td><input type="number" step="1" style="width:80%;"/></td>
-    <% end %>
+    <td>
+      <%= form.fields_for :holes, [] do |h| %>
+        <%= h.number_field :hole_par %>
+      <% end %>
+    </td>
     </tr>
     <tr>
     <td>HCP</td>

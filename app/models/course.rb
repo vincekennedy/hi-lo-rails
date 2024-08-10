@@ -7,8 +7,20 @@ class Course < ApplicationRecord
 
     validates :holes, :length => { :minimum => 9}
 
+    accepts_nested_attributes_for :holes
+
     def show
         @course = Course.find(params[:id])
         @holes = @course.holes
     end
+
+    def create
+        logger.info "!------- CREATE METHOD ------!"
+    end
+
+    private
+
+        def course_params
+            params.require(:name, :rating, :slope, :par, :holes)
+        end
 end
