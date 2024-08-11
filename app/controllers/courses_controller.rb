@@ -13,6 +13,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    18.times { @course.holes.build }
   end
 
   # GET /courses/1/edit
@@ -22,7 +23,8 @@ class CoursesController < ApplicationController
   # POST /courses or /courses.json
   def create
     @course = Course.new(course_params)
-
+    logger.info "!------- CREATE METHOD ------!"
+    logger.info "Course : #{course_params.inspect}"
     respond_to do |format|
       if @course.save
         format.html { redirect_to course_url(@course), notice: "Course was successfully created." }
@@ -65,6 +67,6 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:name, :rating, :slope, :par)
+      params.require(:course).permit(:name, :rating, :slope, :par, holes_attributes: [:hole_number, :hole_par, :hole_handicap, :id, :destroy])
     end
 end

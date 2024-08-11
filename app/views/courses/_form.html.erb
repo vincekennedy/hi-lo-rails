@@ -1,4 +1,4 @@
-<%= form_with(model: course) do |form| %>
+<%= form_with model: @course do |form| %>
   <% if course.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
@@ -31,48 +31,29 @@
     <%= form.number_field :par %>
   </div>
 
-  <br>
-  <table>
-    <tr>
-      <th></th>
-      <% for i in 1..9 do %>
-          <th><%= i %></th>
-      <% end %>
-    </tr>
-    <tr>
-    <td>PAR</td>
-    <td>
-      <%= form.fields_for :holes, [] do |h| %>
-        <%= h.number_field :hole_par %>
-      <% end %>
-    </td>
-    </tr>
-    <tr>
-    <td>HCP</td>
-    <% for i in 1..9 do %>
-      <td><input type="number" step="1" style="width:80%;"/></td>
-    <% end %>
-    </tr>
+  <h2>Holes</h2>
+  <div class="holes-grid">
+  <%= form.fields_for :holes do |hole_form| %>
+    <% index = hole_form.index || 1 %>
+    <div class="hole-entry">
+      <div>
+        <label>Hole: </label>
+        <span class="hole-number"><%= index + 1 %></span>
+        <%= hole_form.hidden_field :hole_number, value: index + 1 %>
+      </div>
 
-    <tr>
-      <th></th>
-      <% for i in 10..18 do %>
-        <th><%= i %></th>
-      <% end %>
-    </tr>
-    <tr>
-    <td>PAR</td>
-    <% for i in 1..9 do %>
-      <td><input type="number" step="1" style="width:80%;"/></td>
-    <% end %>
-    </tr>
-    <tr>
-    <td>HCP</td>
-    <% for i in 1..9 do %>
-      <td><input type="number" step="1" style="width:80%;"/></td>
-    <% end %>
-    </tr>
-  </table>
+      <div>
+        <%= hole_form.label :par %>
+        <%= hole_form.number_field :hole_par, value: "4", min: "3", max: "6" %>
+      </div>
+
+      <div>
+        <%= hole_form.label :handicap %>
+        <%= hole_form.number_field :hole_handicap, min: "1", max: "18"%>
+      </div>
+    </div>
+  <% end %>
+</div>
 
   <br><br>
 
