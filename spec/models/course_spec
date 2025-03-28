@@ -37,6 +37,7 @@ RSpec.describe Course, type: :model do
         duplicate_hole = golf_course.holes.build(hole_number: 10, hole_par: 5, hole_handicap: 1)
     
         expect(duplicate_hole).not_to be_valid
+        expect(golf_course).not_to be_valid
         expect(duplicate_hole.errors[:hole_handicap]).to include('must be unique for the same course')
       end
 

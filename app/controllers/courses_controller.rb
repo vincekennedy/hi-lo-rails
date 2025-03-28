@@ -13,7 +13,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
-    18.times { @course.holes.build }
+    18.times { @course.holes.new }
   end
 
   # GET /courses/1/edit
@@ -22,11 +22,12 @@ class CoursesController < ApplicationController
 
   # POST /courses or /courses.json
   def create
-    @course = Course.new(course_params)
+    @course = Course.create(course_params)
     logger.info "!------- CREATE METHOD ------!"
     logger.info "Course : #{course_params.inspect}"
     respond_to do |format|
-      if @course.save
+      if @course.valid? 
+        @course.save
         format.html { redirect_to course_url(@course), notice: "Course was successfully created." }
         format.json { render :show, status: :created, location: @course }
       else
