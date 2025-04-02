@@ -1,16 +1,35 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-4">
+  <h1 class="text-center"><%= @course.name %></h1>
 
-<%= render @course %>
+  <h3 class="mt-4">Holes</h3>
 
-<% @course.holes.each do |hole| %>
-  <li>Hole <%= hole.hole_number %></li>
-  <li>Par:<%= hole.hole_par %></li>
-  <li>HCP:<%= hole.hole_handicap %></li>
-  <br/>
-<% end %>
-<div>
-  <%= link_to "Edit this course", edit_course_path(@course) %> |
-  <%= link_to "Back to courses", courses_path %>
+  <div class="row">
+    <% [@course.holes.first(9), @course.holes.last(9)].each_with_index do |holes_group, row_index| %>
+      <div class="col-12">
+        <table class="table table-bordered text-center">
+          <thead class="table-dark">
+            <tr>
+              <% holes_group.each do |hole| %>
+                <th>Hole <%= hole.hole_number %></th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% holes_group.each do |hole| %>
+                <td>Par <%= hole.hole_par %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <% holes_group.each do |hole| %>
+                <td>HCP <%= hole.hole_handicap %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    <% end %>
+  </div>
 
-  <%= button_to "Destroy this course", @course, method: :delete %>
+  <%= link_to "Back to Courses", courses_path, class: "btn btn-secondary mt-3" %>
 </div>
