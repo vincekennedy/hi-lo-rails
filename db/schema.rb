@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_01_152520) do
+ActiveRecord::Schema[7.1].define(version: 2024_08_24_161450) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.float "rating"
@@ -27,6 +27,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_01_152520) do
     t.integer "hole_par"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "number"
+    t.integer "handicap"
+    t.integer "par"
+    t.index ["course_id"], name: "index_holes_on_course_id"
   end
 
 end

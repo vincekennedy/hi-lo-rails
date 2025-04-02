@@ -1,0 +1,44 @@
+require 'rails_helper'
+
+RSpec.describe Course, type: :model do
+  it 'successfully creates a golf course with valid attributes' do
+    course = Course.new(
+      name: 'Sample Course',
+      rating: 72,
+      slope: 100,
+      par: 72
+    )
+
+    18.times do |i|
+      course.holes.build(
+        hole_number: i + 1,
+        hole_par: 4,
+        hole_handicap: i 
+      )
+    end
+
+    expect(course).to be_valid
+    expect { course.save }.to change { Course.count }.by(1)
+  end
+
+    it 'validates uniqueness of hole_handicap within a golf course' do
+        golf_course = Course.create!(
+            name: 'New Sample Course',
+            rating: 72,
+            slope: 100,
+            par: 72
+          )    
+        # Create a hole with handicap 1
+        2.times do |i|
+            golf_course.holes.create!(hole_number: i+1, hole_par: 4, hole_handicap: i+1)
+        end
+    
+        # Attempt to create another hole with the same handicap for the same golf course
+        duplicate_hole = golf_course.holes.build(hole_number: 10, hole_par: 5, hole_handicap: 1)
+    
+        expect(duplicate_hole).not_to be_valid
+        expect(golf_course).not_to be_valid
+        expect(duplicate_hole.errors[:hole_handicap]).to include('must be unique for the same course')
+      end
+
+end
