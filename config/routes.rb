@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount API::Base, at: "/"
+  root to: redirect('/courses/')
   resources :courses
   resources :holes
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
