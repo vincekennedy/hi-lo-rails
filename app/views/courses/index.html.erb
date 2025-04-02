@@ -1,14 +1,25 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-4">
+  <h1 class="mb-4 text-center">Courses</h1>
 
-<h1>Courses</h1>
-
-<div id="courses">
-  <% @courses.each do |course| %>
-    <%= render course %>
-    <p>
-      <%= link_to "Show this course", course %>
-    </p>
-  <% end %>
+  <div class="row">
+    <% @courses.each do |course| %>
+      <div class="col-md-4 mb-4">
+        <div class="card shadow-lg">
+          <div class="card-body">
+            <h5 class="card-title"><%= course.name %></h5>
+            <p class="card-text">
+              <strong>Holes:</strong> <%= course.holes.count %>
+              <br/>
+              <strong>Par:</strong> <%= course.par %>
+            </p>
+            
+            <div class="d-flex justify-content-between">
+              <%= link_to "View", course_path(course), class: "btn btn-primary" %>
+              <%= link_to "Edit", edit_course_path(course), class: "btn btn-secondary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-<%= link_to "New course", new_course_path %>
