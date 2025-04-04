@@ -1,7 +1,56 @@
-<h1>New course</h1>
+<h1>New Course</h1>
 
-<%= render "form", course: @course %>
+<%= form_with model: @course, local: true do |f| %>
+  <div class="mb-3">
+    <%= f.label :name, class: "form-label" %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
 
-<div>
-  <%= link_to "Back to courses", courses_path %>
+  <div class="mb-3">
+    <%= f.label :rating, class: "form-label" %>
+    <%= f.text_field :rating, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :slope, class: "form-label" %>
+    <%= f.number_field :slope, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :par, class: "form-label" %>
+    <%= f.number_field :par, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= label_tag :hole_count, "Number of Holes", class: "form-label" %>
+    <%= select_tag :hole_count, options_for_select([9, 18]), class: "form-select", id: "hole-count-selector" %>
+  </div>
+
+  <div id="holes-wrapper" class="row g-3">
+    <% 18.times do |i| %>
+      <div class="col-md-4 hole-entry" id="hole-<%= i + 1 %>">
+        <div class="card p-3 shadow-sm">
+          <h5 class="card-title">Hole <%= i + 1 %></h5>
+
+          <%= hidden_field_tag "course[holes_attributes][#{i}][hole_number]", i + 1 %>
+
+          <div class="mb-2">
+            <%= label_tag "course[holes_attributes][#{i}][hole_par]", "Par", class: "form-label" %>
+            <%= number_field_tag "course[holes_attributes][#{i}][hole_par]", 4, class: "form-control" %>
+          </div>
+
+          <div class="mb-2">
+            <%= label_tag "course[holes_attributes][#{i}][hole_handicap]", "Handicap", class: "form-label" %>
+            <%= number_field_tag "course[holes_attributes][#{i}][hole_handicap]", i + 1, class: "form-control" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <%= f.submit "Create Course", class: "btn btn-primary mt-3" %>
+<% end %>
+
+<div class="mt-3">
+  <%= link_to "Back to courses", courses_path, class: "btn btn-secondary" %>
 </div>
