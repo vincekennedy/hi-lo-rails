@@ -5,7 +5,7 @@ class Course < ApplicationRecord
     validates :slope, presence: true
     validates :par, presence: true
     accepts_nested_attributes_for :holes
-    # validates :holes, :length => { :minimum => 9}
+    validates :holes, :length => { :minimum => 9}
     validate :must_have_unique_handicaps
 
 

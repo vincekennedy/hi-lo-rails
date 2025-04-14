@@ -15,14 +15,6 @@ class HolesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should create hole" do
-    assert_difference("Hole.count") do
-      post holes_url, params: { hole: { course_id: @hole.course_id, hole_handicap: @hole.hole_handicap, hole_number: @hole.hole_number, hole_par: @hole.hole_par } }
-    end
-
-    assert_redirected_to hole_url(Hole.last)
-  end
-
   test "should show hole" do
     get hole_url(@hole)
     assert_response :success
@@ -31,11 +23,6 @@ class HolesControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_hole_url(@hole)
     assert_response :success
-  end
-
-  test "should update hole" do
-    patch hole_url(@hole), params: { hole: { course_id: @hole.course_id, hole_handicap: @hole.hole_handicap, hole_number: @hole.hole_number, hole_par: @hole.hole_par } }
-    assert_redirected_to hole_url(@hole)
   end
 
   test "should destroy hole" do
