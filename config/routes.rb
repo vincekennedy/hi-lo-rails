@@ -5,10 +5,18 @@ Rails.application.routes.draw do
   post "login", to: "sessions#create"
   delete "logout", to: "sessions#destroy"
 
+  # API routes
+  namespace :api do
+    namespace :v1 do
+      post 'login', to: 'sessions#create'
+    end
+  end
+
   mount API::Base, at: "/"
   resources :sessions, only: [:new, :create, :destroy]
   resources :courses
   resources :holes
+
 
 
   # User routes

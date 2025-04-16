@@ -26,12 +26,11 @@ RSpec.describe Course, type: :model do
             name: 'New Sample Course',
             rating: 72,
             slope: 100,
-            par: 72
+            par: 72,
+            holes_attributes: (1..9).map do |i|
+              { hole_number: i, hole_par: 4, hole_handicap: i }
+            end
           )    
-        # Create a hole with handicap 1
-        2.times do |i|
-            golf_course.holes.create!(hole_number: i+1, hole_par: 4, hole_handicap: i+1)
-        end
     
         # Attempt to create another hole with the same handicap for the same golf course
         duplicate_hole = golf_course.holes.build(hole_number: 10, hole_par: 5, hole_handicap: 1)
