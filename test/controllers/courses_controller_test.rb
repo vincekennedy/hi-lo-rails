@@ -2,6 +2,8 @@ require "test_helper"
 
 class CoursesControllerTest < ActionDispatch::IntegrationTest
   setup do
+    @user = users(:test_user)
+    post login_url, params: { session: { email: @user.email, password: 'password' } }
     @course = courses(:one)
   end
 

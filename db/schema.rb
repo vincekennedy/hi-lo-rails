@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_08_24_161450) do
+ActiveRecord::Schema[7.1].define(version: 2025_04_14_234842) do
   create_table "courses", force: :cascade do |t|
     t.string "name"
     t.float "rating"
@@ -31,6 +31,14 @@ ActiveRecord::Schema[7.1].define(version: 2024_08_24_161450) do
     t.integer "handicap"
     t.integer "par"
     t.index ["course_id"], name: "index_holes_on_course_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

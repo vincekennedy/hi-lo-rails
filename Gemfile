@@ -14,6 +14,7 @@ gem 'grape-active_model_serializers'
 gem "bootstrap-sass",  "3.4.1"
 gem "sassc-rails",     "2.1.2"
 gem 'rspec-rails'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
