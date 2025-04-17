@@ -11,17 +11,16 @@ RSpec.describe 'API::V1::Sessions', type: :request do
     end
   end
 
-  #   context 'with invalid credentials' do
-  #     it 'returns an error message when the credentials are invalid' do
-  #       # Make the POST request with invalid credentials
-  #       post '/api/v1/login', params: { email: 'testuser@example.com', password: 'wrongpassword' }
+    # context 'with invalid credentials' do
+    #   it 'returns an error message when the credentials are invalid' do
+    #     # Make the POST request with invalid credentials
+    #     post '/api/v1/login', params: { email: 'testuser@example.com', password: 'wrongpassword' }
 
-  #       # Check the response status (expecting unauthorized)
-  #       expect(response).to have_http_status(:unauthorized)
+    #     # Check the response status (expecting unauthorized)
+    #     expect(response).to have_http_status(:unauthorized)
 
-  #       # Check for error message
-  #       expect(json_response['error']).to eq('Invalid credentials')
-  #     end
-  #   end
-  # end
+    #     # Check for error message
+    #     expect(json_response['error']).to eq('Invalid credentials')
+    #   end
+    # end
 end
