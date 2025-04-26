@@ -1,0 +1,9 @@
+<% if @results.any? %>
+  <ul>
+    <% @results.each do |course| %>
+      <li><strong><%= course['name'] %></strong> - <%= course['location'] %></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No courses found</p>
+<% end %>

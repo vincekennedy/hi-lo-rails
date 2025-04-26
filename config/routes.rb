@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   mount API::Base, at: "/"
   resources :sessions, only: [:new, :create, :destroy]
+  resources :courses, only: [:index, :new, :create, :edit, :update, :destroy]
   resources :courses
   resources :holes
 

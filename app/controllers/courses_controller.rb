@@ -5,6 +5,19 @@ class CoursesController < ApplicationController
   # GET /courses or /courses.json
   def index
     @courses = Course.all
+
+    if params[:query].present?
+      begin
+        response = GolfCourseAPIService.search_courses(params[:query])
+        @results = response['courses'] || []
+        Rails.logger.error "Search Results: #{@results.inspect}"
+        Rails.logger.error("API Response: #{response.inspect}")
+      rescue StandardError => e
+        Rails.logger.error("API Error: #{e}")
+        flash[:error] = "Search failed: #{e.message}"
+        @results = []
+      end
+    end
   end
 
   # GET /courses/1 or /courses/1.json
